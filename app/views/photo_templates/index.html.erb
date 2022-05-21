@@ -1,0 +1,53 @@
+<h1> List of photos </h1>
+
+<hr>
+
+<form action="/insert_photo">
+<Label for="image_box">Image</Label>
+<input id="image_box" name="query_impage">
+
+<Label for="caption_box">Caption</Label>
+<textarea id="caption_box" name="query_caption"></textarea>
+
+<Label for="owner_id_box">Owner ID</Label>
+<input id="owner_id_box" name="query_owner_id">
+
+<button> Add photo </button>
+</form>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>Image</th>
+    <th>Caption</th>
+    <th>Owner</th>
+    <th>Posted</th>
+    <th></th>
+  </tr>
+<% @list_of_photos.each do |a_photo|%>
+  <tr>
+    <td>
+      <img src="<%=a_photo.image%>">
+    </td>
+
+    <td>
+      <%=a_photo.caption%>
+    </td>
+
+    <td>
+      <%=a_photo.poster.username%>
+    </td>
+
+    <td>
+      <%=a_photo.poster.created_at%>
+    </td>
+
+    <td>
+      <a href="/photos/<%=a_photo.id%>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <%end%>
+  </table>
